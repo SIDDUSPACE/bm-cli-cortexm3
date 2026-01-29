@@ -1,0 +1,16 @@
+# Build artifacts
+build/
+*.o
+*.elf
+*.map
+
+# Renode runtime & binaries
+renode_*/
+*.so
+uart.log*
+*.log
+
+# Editor / OS junk
+.vscode/.browse.*
+.DS_Store
+Thumbs.db
