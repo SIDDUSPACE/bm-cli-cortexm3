@@ -1,24 +1,24 @@
-# ================= TOOLCHAIN =================
+# TOOLCHAIN
 CC      = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 SIZE    = arm-none-eabi-size
 
-# ================= TARGET ====================
+# TARGET 
 TARGET  = bm-cli
 BUILD   = build
 
-# ================= CPU FLAGS =================
+# CPU FLAGS 
 CPU     = -mcpu=cortex-m3 -mthumb
 CFLAGS  = $(CPU) -Wall -Wextra -ffreestanding -nostdlib -O0 -g
 LDFLAGS = $(CPU) -T linker.ld -nostdlib -Wl,-Map=$(BUILD)/$(TARGET).map
 
-# ================= SOURCES ===================
+# SOURCES 
 SRC_C   = $(wildcard src/*.c)
 SRC_S   = $(wildcard src/*.s)
 OBJ     = $(patsubst src/%.c,$(BUILD)/%.o,$(SRC_C)) \
           $(patsubst src/%.s,$(BUILD)/%.o,$(SRC_S))
 
-# ================= RULES =====================
+# RULES 
 all: $(BUILD)/$(TARGET).elf
 
 $(BUILD):

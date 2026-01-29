@@ -33,15 +33,15 @@ char uart_getc_nonblock(void)
     return c;
 }
 
-/* USART1 IRQ handler */
+/* USART1 IRQ handler here */
 void USART1_IRQHandler(void)
 {
-    if (USART1_SR & (1 << 5)) {   // RXNE
+    if (USART1_SR & (1 << 5)) {  
         char c = (char)USART1_DR;
         rx_push(c);
     }
 }
 void uart_enable_rx_irq(void)
 {
-    USART1_CR1 |= (1 << 5);   // RXNEIE
+    USART1_CR1 |= (1 << 5); 
 }
